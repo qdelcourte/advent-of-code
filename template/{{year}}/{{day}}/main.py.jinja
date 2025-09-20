@@ -1,0 +1,27 @@
+# https://adventofcode.com/{{year}}/day/{{day}}
+# --- Day {{day}}{% if puzzle_name %}: {{puzzle_name}}{% endif %} ---
+
+TEST_INPUT = """{% if puzzle_example_data_1 %}{{puzzle_example_data_1}}{% endif %}"""
+
+def part1(data):
+    """Solve part 1."""
+    return data
+
+
+def part2(data):
+    """Solve part 2."""
+    return data
+
+if __name__ == "__main__":
+    test_input = TEST_INPUT.splitlines()
+    r1 = part1(test_input)
+    assert r1 == {% if puzzle_example_answer_1 %}{{puzzle_example_answer_1}}{% else %}None{% endif %}, r1
+    data = open('./input.txt', 'r').readlines()
+    r1 = part1(data)
+    assert r1 == None, r1
+    print(f"#1: {r1}")
+    r2 = part2(test_input)
+    assert r2 == None, r2
+    r2 = part2(data)
+    assert r2 == None, r2
+    print(f"#2: {r2}")
