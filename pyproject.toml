@@ -1,0 +1,10 @@
+[project]
+name = "advent-of-code"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.13"
+dependencies = [
+    "advent-of-code-data==2.1.0",
+    "graphviz>=0.21",
+    "numpy>=2.3.3",
+]
