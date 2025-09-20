@@ -20,3 +20,12 @@ Run a script ! (By default on the current date)
 
     make run
     make run YEAR=2025 DAY=1
+
+If an error appear try to use LEGACY param to run an old solution (not yet migrated)
+
+    make run YEAR=2025 DAY=1 LEGACY=1
+
+Submit your answer like this:    
+    
+    make submit ANSWER=xxxx
+    make submit YEAR=2025 DAY=1 ANSWER=xxxx

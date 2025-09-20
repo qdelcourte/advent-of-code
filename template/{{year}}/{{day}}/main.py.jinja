@@ -1,6 +1,12 @@
 # https://adventofcode.com/{{year}}/day/{{day}}
 # --- Day {{day}}{% if puzzle_name %}: {{puzzle_name}}{% endif %} ---
 
+import os
+
+from helpers.utils import (
+	read_input_from_main
+)
+
 TEST_INPUT = """{% if puzzle_example_data_1 %}{{puzzle_example_data_1}}{% endif %}"""
 
 def part1(data):
@@ -16,7 +22,7 @@ if __name__ == "__main__":
     test_input = TEST_INPUT.splitlines()
     r1 = part1(test_input)
     assert r1 == {% if puzzle_example_answer_1 %}{{puzzle_example_answer_1}}{% else %}None{% endif %}, r1
-    data = open('./input.txt', 'r').readlines()
+    data = read_input_from_main(__file__)
     r1 = part1(data)
     assert r1 == None, r1
     print(f"#1: {r1}")

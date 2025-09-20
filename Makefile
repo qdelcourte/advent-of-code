@@ -9,4 +9,13 @@ create:
 
 run:
 	@echo "Run $(YEAR)-$(DAY)"
+ifeq ($(LEGACY), 1)
+	@echo "Legacy mode"
 	@cd $(YEAR)/$(DAY) && uv run main.py
+else
+	@uv run python -m $(YEAR).$(DAY).main
+endif
+
+submit:
+	@echo "Submit $(YEAR)-$(DAY)"
+	@uv run helpers/submit.py $(YEAR) $(DAY) $(ANSWER)
