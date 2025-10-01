@@ -1,5 +1,5 @@
 # AoC
-![](https://img.shields.io/badge/stars%20⭐-107-yellow)
+![](https://img.shields.io/badge/stars%20⭐-108-yellow)
 
 This repository contains my personal solutions to the [Advent Of Code](https://adventofcode.com) challenges.
 
