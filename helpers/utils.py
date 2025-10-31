@@ -1,8 +1,11 @@
 import os
 import random
 
+def read_from_main(execution_file: str, filename: str):
+    return os.path.join(os.path.dirname(execution_file), filename)
+
 def read_input_from_main(execution_file: str):
-    return open(os.path.join(os.path.dirname(execution_file), "input.txt"), 'r').read().splitlines()
+    return open(read_from_main(execution_file, "input.txt"), 'r').read().splitlines()
 
 def pprint_matrix(m):
     """
