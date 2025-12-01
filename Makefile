@@ -5,7 +5,7 @@ IDE := pycharm
 create:
 	@echo "Setup $(YEAR)-$(DAY)"
 	@echo "https://adventofcode.com/$(YEAR)/day/$(DAY)"
-	@uv run helpers/download.py $(YEAR) $(DAY) && $(IDE) $(YEAR)/$(DAY)/main.py
+	@uv run helpers/download.py $(YEAR) $(DAY)
 
 run:
 	@echo "Run $(YEAR)-$(DAY)"
