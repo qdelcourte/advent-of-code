@@ -4,8 +4,9 @@ import random
 def read_from_main(execution_file: str, filename: str):
     return os.path.join(os.path.dirname(execution_file), filename)
 
-def read_input_from_main(execution_file: str):
-    return open(read_from_main(execution_file, "input.txt"), 'r').read().splitlines()
+def read_input_from_main(execution_file: str, split_lines: bool = True):
+    b = open(read_from_main(execution_file, "input.txt"), 'r').read()
+    return b.splitlines() if split_lines else b
 
 def pprint_matrix(m):
     """
