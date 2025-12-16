@@ -18,8 +18,8 @@ def pprint_matrix(m):
         print()
     print("-------------")
 
-def str_to_matrix(data: str):
-    return [list(map(int, line)) for line in data]
+def str_to_matrix(data: str, type=int):
+    return [list(map(type, line)) for line in data]
 
 def flatten(list_of_lists):
     return [x for xs in list_of_lists for x in xs]
