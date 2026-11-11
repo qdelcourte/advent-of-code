@@ -1,5 +1,11 @@
 import os
 import random
+import re
+
+
+# Grid coordinates are (row, column), clockwise from north.
+DIR4 = ((-1, 0), (0, 1), (1, 0), (0, -1))
+DIR8 = ((-1, 0), (-1, 1), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1))
 
 def read_from_main(execution_file: str, filename: str):
     return os.path.join(os.path.dirname(execution_file), filename)
@@ -23,6 +29,49 @@ def str_to_matrix(data: str, type=int):
 
 def flatten(list_of_lists):
     return [x for xs in list_of_lists for x in xs]
+
+def ints(text: str) -> list[int]:
+    """Extract signed integers: ints('x=-12, y=+3') == [-12, 3]."""
+    return list(map(int, re.findall(r"[+-]?\d+", text)))
+
+
+def blocks(text: str) -> list[str]:
+    """Split raw input on blank lines, preserving spaces within each block.
+
+    Supports LF/CRLF, repeated blank lines and whitespace-only separators.
+    Leading/trailing line breaks and empty blocks are discarded.
+    """
+    return [
+        block for block in re.split(r"\r?\n(?:[ \t]*\r?\n)+", text.strip("\r\n"))
+        if block.strip()
+    ]
+
+
+def _neighbors(position, grid, directions):
+    row, column = position
+    for dr, dc in directions:
+        nr, nc = row + dr, column + dc
+        if 0 <= nr < len(grid) and 0 <= nc < len(grid[nr]):
+            yield nr, nc
+
+
+def neighbors4(position, grid):
+    """Yield in-bounds (row, column) neighbors in N/E/S/W order.
+
+    Accepts a sequence of strings or rows, including uneven row lengths.
+    Checks bounds only; callers decide which cells are walkable.
+    """
+    return _neighbors(position, grid, DIR4)
+
+
+def neighbors8(position, grid):
+    """Like neighbors4, including diagonals, clockwise from north."""
+    return _neighbors(position, grid, DIR8)
+
+
+def manhattan(a, b) -> int:
+    """Manhattan distance between two 2D positions."""
+    return abs(a[0] - b[0]) + abs(a[1] - b[1])
 
 class Colors:
     red = lambda s: "\033[91m{}\033[00m".format(s)
