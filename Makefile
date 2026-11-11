@@ -2,6 +2,8 @@ YEAR := $(shell date +%Y)
 DAY := $(shell date +%d)
 IDE := pycharm
 
+.PHONY: create run submit session
+
 create:
 	@echo "Setup $(YEAR)-$(DAY)"
 	@echo "https://adventofcode.com/$(YEAR)/day/$(DAY)"
@@ -19,3 +21,6 @@ endif
 submit:
 	@echo "Submit $(YEAR)-$(DAY)"
 	@uv run helpers/submit.py $(YEAR) $(DAY) $(ANSWER)
+
+session:
+	@env -u AOC_SESSION uv run --with browser-cookie3 aocd-token

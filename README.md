@@ -10,8 +10,16 @@ Use:
 
 ## Command lines
 
-Create template fast ! (By default on the current date) 
-You have to add your [session ID](https://github.com/wimglenn/advent-of-code-data#quickstart) in env
+Retrieve your session from your browser after logging in to Advent of Code:
+
+    make session
+
+When a single valid token is found, it is saved to `~/.config/aocd/token` if
+that file does not already exist. `aocd` reads this file automatically for
+`make create` and `make submit`. No session script or environment variable is
+required; the token stays outside the repository.
+
+Create template fast ! (By default on the current date)
 
     make create
     make create YEAR=2025 DAY=01

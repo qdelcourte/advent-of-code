@@ -19,7 +19,6 @@ htmlcov/
 .env
 .env.*
 !.env.example
-/session.sh
 
 # IDE and editor files
 .idea/
